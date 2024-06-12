@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Ropa - Precios</title>
+    <title>Consultar Precio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Consulta de Precios de Prendas</h1>
-        <input type="text" id="codigo" placeholder="Ingrese el código de la prenda">
+        <h1>Consultar Precio</h1>
+        <input type="number" id="codigo" placeholder="Ingrese el código de la prenda" onkeydown="if(event.key === 'Enter') buscarPrecios()">
         <button onclick="buscarPrecios()">Buscar</button>
         <div id="resultados"></div>
     </div>
