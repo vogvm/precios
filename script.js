@@ -8,6 +8,11 @@ fetch('precios.json')
     })
     .catch(error => console.error('Error al cargar los datos:', error));
 
+// Función para formatear los números
+function formatearNumero(numero) {
+    return new Intl.NumberFormat('es-AR', { minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(numero);
+}
+
 function buscarPrecios() {
     const codigo = document.getElementById('codigo').value;
     const precioCredito = prendas[codigo];
@@ -21,9 +26,9 @@ function buscarPrecios() {
         const precioEfectivo = (precioCredito * 0.75).toFixed(2);
 
         resultadosDiv.innerHTML = `
-            <p><strong>Precio a crédito:</strong> $${precioCredito} (3 cuotas de $${precioCuota} cada una)</p>
-            <p><strong>Precio con transferencia:</strong> $${precioTransferencia}</p>
-            <p><strong>Precio en efectivo:</strong> $${precioEfectivo}</p>
+            <p>Crédito: <strong>$${formatearNumero(precioCredito)}</strong> (3 cuotas de <strong>$${precioCuota.replace('.', ',')}</strong>)</p>
+            <p>Transferencia/Débito: <strong>$${formatearNumero(precioTransferencia).replace('.', ',')}</strong></p>
+            <p>Efectivo: <strong>$${formatearNumero(precioEfectivo).replace('.', ',')}</strong></p>
         `;
     } else {
         resultadosDiv.innerHTML = '<p>Prenda no encontrada</p>';
