@@ -1,9 +1,12 @@
-const prendas = {
-    "001": 1000,
-    "002": 1500,
-    "003": 2000,
-    // Agregar más prendas según sea necesario
-};
+let prendas = {};
+
+// Cargar los datos desde el archivo JSON
+fetch('precios.json')
+    .then(response => response.json())
+    .then(data => {
+        prendas = data;
+    })
+    .catch(error => console.error('Error al cargar los datos:', error));
 
 function buscarPrecios() {
     const codigo = document.getElementById('codigo').value;
