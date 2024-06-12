@@ -1,18 +1,10 @@
-let prendas = {};
-
-// Cargar los datos desde el archivo JSON
-fetch('precios.json')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Error al cargar el archivo JSON');
-        }
-        return response.json();
-    })
-    .then(data => {
-        prendas = data;
-        console.log('Datos cargados:', prendas);  // Verificar que los datos se hayan cargado
-    })
-    .catch(error => console.error('Error al cargar los datos:', error));
+// Lista de códigos y precios
+const prendas = {
+    "001": 1000,
+    "002": 1500,
+    "003": 2000
+    // Agrega más prendas aquí
+};
 
 // Función para formatear los números
 function formatearNumero(numero) {
