@@ -14,13 +14,17 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    max-width: 90%;
+    width: 400px;
 }
 
 input, button {
     padding: 10px;
     margin: 10px;
+    width: calc(100% - 22px);
 }
 
 #resultados {
     margin-top: 20px;
+    text-align: left;
 }
