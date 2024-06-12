@@ -26,7 +26,7 @@ function buscarPrecios() {
         const precioEfectivo = (precioCredito * 0.75).toFixed(2);
 
         resultadosDiv.innerHTML = `
-            <p>Crédito: <strong>$${formatearNumero(precioCredito)}</strong> (3 cuotas de <strong>$${precioCuota.replace('.', ',')}</strong>)</p>
+            <p>Crédito: <strong>$${formatearNumero(precioCredito)}</strong> (3 de <strong>$${precioCuota.replace('.', ',')}</strong>)</p>
             <p>Transferencia/Débito: <strong>$${formatearNumero(precioTransferencia).replace('.', ',')}</strong></p>
             <p>Efectivo: <strong>$${formatearNumero(precioEfectivo).replace('.', ',')}</strong></p>
         `;
