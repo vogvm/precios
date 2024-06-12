@@ -11,7 +11,16 @@
         <h1>Consultar Precio</h1>
         <input type="number" id="codigo" placeholder="Ingrese el código de la prenda" onkeydown="if(event.key === 'Enter') buscarPrecios()">
         <button onclick="buscarPrecios()">Buscar</button>
-        <div id="resultados"></div>
+        <div id="resultados">
+            <div>
+                <p>Crédito:</p>
+                <p>Efectivo:</p>
+            </div>
+            <div>
+                <p id="precioCredito"></p>
+                <p id="precioEfectivo"></p>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
