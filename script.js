@@ -25,9 +25,10 @@ function buscarPrecios() {
         const precioTransferencia = (precioCredito * 0.80).toFixed(2);
         const precioEfectivo = (precioCredito * 0.75).toFixed(2);
 
-        resultadosDiv.innerHTML = `
-    <p>Crédito: <strong>$${formatearNumero(precioCredito)}</strong> (3 de <strong>$${precioCuota.replace('.', ',')}</strong>)</p>
-    <p>Efectivo: <strong>$${formatearNumero(precioEfectivo).replace('.', ',')}</strong></p>
+       resultadosDiv.innerHTML = `
+    <p><strong>$${formatearNumero(precioCredito)}</strong></p>
+    <p><strong>$${formatearNumero(precioTransferencia).replace('.', ',')}</strong></p>
+    <p><strong>$${formatearNumero(precioEfectivo).replace('.', ',')}</strong></p>
 `;
     } else {
         resultadosDiv.innerHTML = '<p>Prenda no encontrada</p>';
