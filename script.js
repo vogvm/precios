@@ -2,9 +2,15 @@ let prendas = {};
 
 // Cargar los datos desde el archivo JSON
 fetch('precios.json')
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error al cargar el archivo JSON');
+        }
+        return response.json();
+    })
     .then(data => {
         prendas = data;
+        console.log('Datos cargados:', prendas);  // Verificar que los datos se hayan cargado
     })
     .catch(error => console.error('Error al cargar los datos:', error));
 
@@ -15,7 +21,9 @@ function formatearNumero(numero) {
 
 function buscarPrecios() {
     const codigo = document.getElementById('codigo').value;
+    console.log('Código ingresado:', codigo);  // Verificar el código ingresado
     const precioCredito = prendas[codigo];
+    console.log('Precio crédito:', precioCredito);  // Verificar el precio de crédito
 
     const resultadosDiv = document.getElementById('resultados');
     resultadosDiv.innerHTML = '';
