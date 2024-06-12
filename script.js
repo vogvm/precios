@@ -1,16 +1,8 @@
 // Lista de códigos y precios
 const prendas = {
-    "01001": 17000,
-    "01002": ,
-    "02001": 30000,
-    "02002": 30000,
-    "02003": 30000,
-    "02004": 39750,
-    "05001": 24375,
-    "05002": 31500,
-    "05003": 24375,
-    "05004": 24375,
-    
+    "001": 1000,
+    "002": 1500,
+    "003": 2000
     // Agrega más prendas aquí
 };
 
@@ -34,7 +26,7 @@ function buscarPrecios() {
         const precioEfectivo = (precioCredito * 0.75).toFixed(2);
 
         resultadosDiv.innerHTML = `
-            <p>Crédito: <strong>$${formatearNumero(precioCredito)}</strong> (3 de <strong>$${precioCuota.replace('.', ',')}</strong>)</p>
+            <p>Crédito: <strong>$${formatearNumero(precioCredito)}</strong> (3 cuotas de <strong>$${precioCuota.replace('.', ',')}</strong>)</p>
             <p>Transferencia/Débito: <strong>$${formatearNumero(precioTransferencia).replace('.', ',')}</strong></p>
             <p>Efectivo: <strong>$${formatearNumero(precioEfectivo).replace('.', ',')}</strong></p>
         `;
