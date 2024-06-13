@@ -54,6 +54,10 @@ button {
     justify-content: space-between;
 }
 
+#resultados .credito p {
+    margin-bottom: 5px; /* Reduce el espacio entre el precio total y las cuotas */
+}
+
 #resultados p.cuota {
     justify-content: flex-end;
 }
