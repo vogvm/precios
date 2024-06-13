@@ -8,17 +8,39 @@
 </head>
 <body>
     <div class="container">
+        <p id="ultima-actualizacion" class="fecha-actualizacion"></p>
         <h1>Consultar Precio</h1>
         <div class="input-group">
             <input type="number" id="codigo" placeholder="Ingrese el código SIN /" onkeydown="if(event.key === 'Enter') buscarPrecios()">
             <button onclick="buscarPrecios()">Buscar</button>
         </div>
         <div id="resultados"></div>
+        <h2>Historial de Búsqueda</h2>
+<div class="input-group">
+    <button onclick="limpiarHistorial()" class="btn-limpiar">Limpiar Historial</button>
+</div>
+<div id="historial"></div>
+        
+        <!-- Menú Desplegable -->
+        <h2>Productos</h2>
         <div class="input-group">
-            <h2>Historial de Búsqueda</h2>
-            <button onclick="limpiarHistorial()" class="btn-limpiar">Limpiar Historial</button>
+            <select id="categoria" onchange="filtrarProductos()">
+                <option value="all">Todas las categorías</option>
+                <option value="01">Remeras</option>
+                <option value="02">Camisas</option>
+                <option value="03">Pantalones</option>
+                <option value="04">Buzos</option>
+                <option value="05">Chombas</option>
+                <option value="06">Camperas</option>
+                <option value="07">Perfumes, Gorras y Bufandas</option>
+                <option value="08">Cintos, Billeteras y Riñoneras</option>
+                <option value="09">Boxer, Medias y Soquetes</option>
+                <option value="10">Calzado</option>
+                <option value="11">Mates, Termos, Bombillas y Canastas</option>
+            </select>
+            <button onclick="toggleMenu()" class="btn-toggle">Mostrar/Ocultar</button>
         </div>
-        <div id="historial"></div>
+        <div id="menuDesplegable" class="menu-desplegable"></div>
     </div>
     <script src="script.js"></script>
 </body>
