@@ -1,113 +1,116 @@
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
     margin: 0;
     padding: 0;
-    background-color: white;
-    color: black;
 }
 
 .container {
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #ffffff;
 }
 
-/* Títulos */
+.fecha-actualizacion {
+    font-size: 12px;
+    text-align: right;
+    margin-bottom: 10px;
+    color: #666666;
+}
+
 h1, h2 {
     text-align: center;
-    margin: 20px 0;
+    color: #444444;
+    font-size: 18px;
 }
 
-/* Inputs y botones */
 .input-group {
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    align-items: center;
+    padding: 0 5px;
 }
 
-.input-group input[type="text"] {
-    flex-grow: 1;
+.input-group input[type="number"] {
     padding: 10px;
-    font-size: 16px;
-    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    flex: 1;
+    margin-right: 5px;
 }
 
-.input-group button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: gray;
-    color: white;
+.input-group button, .btn-limpiar, .btn-toggle {
+    padding: 10px;
+    background-color: #dddddd;
     border: none;
+    color: #000000;
+    border-radius: 5px;
+    font-size: 14px;
     cursor: pointer;
+    flex: 0 0 auto;
 }
 
-.input-group button:hover {
-    background-color: darkgray;
-}
-
-/* Estilo del historial y resultados */
-#historial {
-    margin: 20px 0;
-}
-
-.historial-item {
+.input-group select {
     padding: 10px;
-    border-bottom: 1px solid #ccc;
-    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-right: 5px;
+    flex: 1;
 }
 
-#resultados {
-    margin: 20px 0;
+.input-group button:hover, .btn-limpiar:hover, .btn-toggle:hover {
+    background-color: #cccccc;
 }
 
-#resultados .descripcion {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
+#resultados p.descripcion {
+    text-align: center;
+    font-size: 16px;
+    margin: 10px 0;
 }
 
 #resultados .precio-item {
     display: flex;
     justify-content: space-between;
-    padding: 5px 0;
+    font-size: 16px;
+    padding: 5px 10px;
 }
 
-#resultados .precio-item span:first-child {
-    font-weight: bold;
+#historial a {
+    color: #007bff;
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
 }
 
-/* Para poner los precios en negrita */
-#resultados .precio-item strong {
-    font-weight: bold;
+#historial p {
+    margin: 0;
+    font-size: 14px;
+    color: #666666;
 }
 
-/* Para ajustar la visualización de las cuotas */
-#resultados .precio-item-cuota {
-    justify-content: flex-end;
-}
-
-/* Menú desplegable */
-.dropdown {
-    margin: 20px 0;
-}
-
-.dropdown select {
-    width: 100%;
+#menuDesplegable {
+    display: none;
     padding: 10px;
-    font-size: 16px;
+    background-color: #f9f9f9;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
 }
 
-.dropdown button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: gray;
-    color: white;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+#menuDesplegable a {
+    color: #007bff;
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
 }
 
-.dropdown button:hover {
-    background-color: darkgray;
+#menuDesplegable p {
+    margin: 0;
+    font-size: 14px;
+    color: #666666;
 }
