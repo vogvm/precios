@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
     margin: 0;
     background-color: #f4f4f4;
@@ -16,15 +16,37 @@ body {
     text-align: center;
     max-width: 90%;
     width: 400px;
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 input, button {
-    padding: 10px;
+    padding: 20px;
     margin: 10px;
-    width: calc(100% - 22px);
+    width: calc(100% - 42px);
+    font-size: 20px;
+}
+
+button {
+    width: calc(100% - 40px);
 }
 
 #resultados {
     margin-top: 24px;
     text-align: left;
+    font-size: 20px;
+}
+
+#resultados p {
+    display: flex;
+    justify-content: space-between;
 }
