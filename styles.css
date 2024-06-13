@@ -53,3 +53,7 @@ button {
     display: flex;
     justify-content: space-between;
 }
+
+#resultados p.cuota {
+    justify-content: flex-end;
+}
