@@ -24,13 +24,15 @@ function buscarPrecios() {
         const precioCredito = prenda.precio;
         const descripcion = prenda.descripcion;
         const precioCuota = (precioCredito / 3).toFixed(2).replace('.', ',');
-        const precioTransferencia = formatearNumero((precioCredito * 0.80).toFixed(2)).replace('.', ',');
-        const precioEfectivo = formatearNumero((precioCredito * 0.75).toFixed(2)).replace('.', ',');
+        const precioTransferencia = formatearNumero((precioCredito * 0.80).toFixed(2));
+        const precioEfectivo = formatearNumero((precioCredito * 0.75).toFixed(2));
 
         resultadosDiv.innerHTML = `
             <p>${descripcion}</p>
-            <p>Crédito: <strong>$${formatearNumero(precioCredito)}</strong></p>
-            <p class="cuota"><strong>3 de $${precioCuota}</strong></p>
+            <div class="credito">
+                <p>Crédito: <strong>$${formatearNumero(precioCredito)}</strong></p>
+                <p class="cuota"><strong>3 de $${precioCuota}</strong></p>
+            </div>
             <p>Transferencia/Débito: <strong>$${precioTransferencia}</strong></p>
             <p>Efectivo: <strong>$${precioEfectivo}</strong></p>
         `;
