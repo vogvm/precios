@@ -150,13 +150,12 @@ const prendas = {
     // ...agregar más prendas según sea necesario
 };
 
-// Función para formatear los números
 function formatearNumero(numero) {
-    return new Intl.NumberFormat('es-AR', { minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(numero);
+    return new Intl.NumberFormat('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(numero);
 }
 
-function buscarPrecios() {
-    const codigo = document.getElementById('codigo').value;
+function buscarPrecios(codigo = null) {
+    codigo = codigo || document.getElementById('codigo').value;
     const prenda = prendas[codigo];
 
     const resultadosDiv = document.getElementById('resultados');
@@ -165,20 +164,64 @@ function buscarPrecios() {
     if (prenda) {
         const precioCredito = prenda.precio;
         const descripcion = prenda.descripcion;
-        const precioCuota = (precioCredito / 3).toFixed(2).replace('.', ',');
-        const precioTransferencia = formatearNumero((precioCredito * 0.80).toFixed(2));
-        const precioEfectivo = formatearNumero((precioCredito * 0.75).toFixed(2));
+        const precioCuota = precioCredito / 3;
+        const precioTransferencia = precioCredito * 0.80;
+        const precioEfectivo = precioCredito * 0.75;
 
         resultadosDiv.innerHTML = `
             <p>${descripcion}</p>
             <div class="credito">
                 <p>Crédito: <strong>$${formatearNumero(precioCredito)}</strong></p>
-                <p class="cuota"><strong>3 de $${precioCuota}</strong></p>
+                <p class="cuota"><strong>3 de $${formatearNumero(precioCuota)}</strong></p>
             </div>
-            <p>Transferencia/Débito: <strong>$${precioTransferencia}</strong></p>
-            <p>Efectivo: <strong>$${precioEfectivo}</strong></p>
+            <p>Transferencia/Débito: <strong>$${formatearNumero(precioTransferencia)}</strong></p>
+            <p>Efectivo: <strong>$${formatearNumero(precioEfectivo)}</strong></p>
         `;
+
+        agregarAlHistorial(codigo, descripcion, precioCredito, precioTransferencia, precioEfectivo);
     } else {
         resultadosDiv.innerHTML = '<p>Prenda no encontrada</p>';
     }
 }
+
+function agregarAlHistorial(codigo, descripcion, precioCredito, precioTransferencia, precioEfectivo) {
+    let historial = JSON.parse(localStorage.getItem('historial')) || [];
+    historial.unshift({ codigo, descripcion, precioCredito, precioTransferencia, precioEfectivo });
+    localStorage.setItem('historial', JSON.stringify(historial));
+    mostrarHistorial();
+}
+
+function mostrarHistorial() {
+    const historialDiv = document.getElementById('historial');
+    historialDiv.innerHTML = '';
+
+    const historial = JSON.parse(localStorage.getItem('historial')) || [];
+
+    historial.forEach(item => {
+        const codigoLink = document.createElement('a');
+        codigoLink.href = '#';
+        codigoLink.textContent = `${item.codigo}: ${item.descripcion}`;
+        codigoLink.onclick = () => {
+            document.getElementById('codigo').value = item.codigo;
+            buscarPrecios(item.codigo);
+        };
+        historialDiv.appendChild(codigoLink);
+
+        const precios = document.createElement('p');
+        precios.innerHTML = `
+            <strong>Crédito:</strong> $${formatearNumero(item.precioCredito)} 
+            <strong>-20%:</strong> $${formatearNumero(item.precioTransferencia)} 
+            <strong>-25%:</strong> $${formatearNumero(item.precioEfectivo)}
+        `;
+        historialDiv.appendChild(precios);
+
+        historialDiv.appendChild(document.createElement('br'));
+    });
+}
+
+function limpiarHistorial() {
+    localStorage.removeItem('historial');
+    mostrarHistorial();
+}
+
+document.addEventListener('DOMContentLoaded', mostrarHistorial);
