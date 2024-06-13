@@ -9,8 +9,10 @@
 <body>
     <div class="container">
         <h1>Consultar Precio</h1>
-        <input type="number" id="codigo" placeholder="Ingrese el código SIN / (BARRA DIAGONAL)" onkeydown="if(event.key === 'Enter') buscarPrecios()">
-        <button onclick="buscarPrecios()">Buscar</button>
+        <div class="input-group">
+            <input type="number" id="codigo" placeholder="Ingrese el código SIN / (BARRA DIAGONAL)" onkeydown="if(event.key === 'Enter') buscarPrecios()">
+            <button onclick="buscarPrecios()">Buscar</button>
+        </div>
         <div id="resultados"></div>
     </div>
     <script src="script.js"></script>
