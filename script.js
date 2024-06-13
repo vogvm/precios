@@ -148,7 +148,10 @@ const prendas = {
     "11010": { precio: 5500, descripcion: "Bombilla torneada" },
     "11011": { precio: 18625, descripcion: "Canasta" }
     // ...agregar más prendas según sea necesario
-};
+    };
+
+// Obtener la fecha y hora de la última actualización del script
+document.getElementById('ultima-actualizacion').textContent = `Última actualización: ${document.lastModified}`;
 
 function formatearNumero(numero) {
     return new Intl.NumberFormat('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(numero);
@@ -169,14 +172,24 @@ function buscarPrecios(codigo = null) {
         const precioEfectivo = precioCredito * 0.75;
 
         resultadosDiv.innerHTML = `
-            <p>${descripcion}</p>
-            <div class="credito">
-                <p>Crédito: <strong>$${formatearNumero(precioCredito)}</strong></p>
-                <p class="cuota"><strong>3 de $${formatearNumero(precioCuota)}</strong></p>
-            </div>
-            <p>Transferencia/Débito: <strong>$${formatearNumero(precioTransferencia)}</strong></p>
-            <p>Efectivo: <strong>$${formatearNumero(precioEfectivo)}</strong></p>
-        `;
+    <p class="descripcion">${descripcion}</p>
+    <div class="precio-item">
+        <span>Crédito:</span>
+        <span><strong>$${formatearNumero(precioCredito)}</strong></span>
+    </div>
+    <div class="precio-item-cuota">
+        <span>3 de:</span>
+        <span><strong>$${formatearNumero(precioCuota)}</strong></span>
+    </div>
+    <div class="precio-item">
+        <span>Transferencia/Débito:</span>
+        <span><strong>$${formatearNumero(precioTransferencia)}</strong></span>
+    </div>
+    <div class="precio-item">
+        <span>Efectivo:</span>
+        <span><strong>$${formatearNumero(precioEfectivo)}</strong></span>
+    </div>
+`;
 
         agregarAlHistorial(codigo, descripcion, precioCredito, precioTransferencia, precioEfectivo);
     } else {
@@ -224,4 +237,79 @@ function limpiarHistorial() {
     mostrarHistorial();
 }
 
-document.addEventListener('DOMContentLoaded', mostrarHistorial);
+document.addEventListener('DOMContentLoaded', () => {
+    mostrarHistorial();
+    mostrarTodosLosProductos();
+});
+
+function toggleMenu() {
+    const menu = document.getElementById('menuDesplegable');
+    menu.style.display = menu.style.display === 'none' || menu.style.display === '' ? 'block' : 'none';
+}
+
+function mostrarTodosLosProductos() {
+    const menuDesplegable = document.getElementById('menuDesplegable');
+    menuDesplegable.innerHTML = '';
+
+    Object.keys(prendas).forEach(codigo => {
+        const prenda = prendas[codigo];
+        const precioCredito = prenda.precio;
+        const descripcion = prenda.descripcion;
+        const precioTransferencia = precioCredito * 0.80;
+        const precioEfectivo = precioCredito * 0.75;
+
+        const codigoLink = document.createElement('a');
+        codigoLink.href = '#';
+        codigoLink.textContent = `${codigo}: ${descripcion}`;
+        codigoLink.onclick = () => {
+            document.getElementById('codigo').value = codigo;
+            buscarPrecios(codigo);
+        };
+        menuDesplegable.appendChild(codigoLink);
+
+        const precios = document.createElement('p');
+        precios.innerHTML = `
+            <strong>Crédito:</strong> $${formatearNumero(precioCredito)} 
+            <strong>-20%:</strong> $${formatearNumero(precioTransferencia)} 
+            <strong>-25%:</strong> $${formatearNumero(precioEfectivo)}
+        `;
+        menuDesplegable.appendChild(precios);
+
+        menuDesplegable.appendChild(document.createElement('br'));
+    });
+}
+
+function filtrarProductos() {
+    const categoria = document.getElementById('categoria').value;
+    const menuDesplegable = document.getElementById('menuDesplegable');
+    menuDesplegable.innerHTML = '';
+
+    Object.keys(prendas).forEach(codigo => {
+        if (categoria === 'all' || codigo.startsWith(categoria)) {
+            const prenda = prendas[codigo];
+            const precioCredito = prenda.precio;
+            const descripcion = prenda.descripcion;
+            const precioTransferencia = precioCredito * 0.80;
+            const precioEfectivo = precioCredito * 0.75;
+
+            const codigoLink = document.createElement('a');
+            codigoLink.href = '#';
+            codigoLink.textContent = `${codigo}: ${descripcion}`;
+            codigoLink.onclick = () => {
+                document.getElementById('codigo').value = codigo;
+                buscarPrecios(codigo);
+            };
+            menuDesplegable.appendChild(codigoLink);
+
+            const precios = document.createElement('p');
+            precios.innerHTML = `
+                <strong>Crédito:</strong> $${formatearNumero(precioCredito)} 
+                <strong>-20%:</strong> $${formatearNumero(precioTransferencia)} 
+                <strong>-25%:</strong> $${formatearNumero(precioEfectivo)}
+            `;
+            menuDesplegable.appendChild(precios);
+
+            menuDesplegable.appendChild(document.createElement('br'));
+        }
+    });
+}
