@@ -23,10 +23,22 @@ h1 {
     font-size: 24px;
 }
 
+h2 {
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: left;
+}
+
 .input-group {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.input-group h2 {
+    margin: 0;
+    padding: 10px;
+    font-size: 16px;
 }
 
 input {
@@ -55,9 +67,42 @@ button {
 }
 
 #resultados .credito p {
-    margin-bottom: 5px; /* Reduce el espacio entre el precio total y las cuotas */
+    margin-bottom: 5px;
 }
 
 #resultados p.cuota {
     justify-content: flex-end;
+}
+
+#historial {
+    text-align: left;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+#historial p {
+    margin: 5px 0;
+}
+
+#historial a {
+    text-decoration: none;
+    color: blue;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#historial p {
+    margin: 5px 0 10px;
+    font-size: 14px;
+    text-align: justify;
+}
+
+.btn-limpiar {
+    margin: 0;
+    padding: 10px;
+    font-size: 12px;
+    height: fit-content;
+    width: auto;
+    margin-left: auto;
 }
