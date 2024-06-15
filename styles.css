@@ -81,6 +81,10 @@ h1, h2 {
     padding: 5px 10px;
 }
 
+.limpiar-historial-group {
+    justify-content: flex-end;
+}
+
 #historial a {
     color: #007bff;
     text-decoration: none;
