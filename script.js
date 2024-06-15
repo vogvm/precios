@@ -179,7 +179,7 @@ function buscarPrecios(codigo = null) {
                 <span>$${formatearNumero(precioCredito)}</span>
             </div>
             <div class="precio-item">
-                <span>3 de:</span>
+                <span>3 de</span>
                 <span>$${formatearNumero(precioCuota)}</span>
             </div>
             <div class="precio-item">
