@@ -177,23 +177,23 @@ function buscarPrecios(codigo = null) {
             <p class="descripcion">${descripcion}</p>
             <div class="precio-item">
                 <span>Crédito:</span>
-                <span>$${formatearNumero(precioCredito)}</span>
+                <span><strong>$${formatearNumero(precioCredito)}</strong></span>
             </div>
             <div class="precio-item">
                 <span>3 de</span>
-                <span>$${formatearNumero(precioCuota)}</span>
+                <span><strong>$${formatearNumero(precioCuota)}</strong></span>
             </div>
             <div class="precio-item">
                 <span>6 de</span>
-                <span>$${formatearNumero(precioCuota1)}</span>
+                <span><strong>$${formatearNumero(precioCuota1)}</strong></span>
             </div>
             <div class="precio-item">
                 <span>Transferencia/Débito:</span>
-                <span>$${formatearNumero(precioTransferencia)}</span>
+                <span><strong>$${formatearNumero(precioTransferencia)}</strong></span>
             </div>
             <div class="precio-item">
                 <span>Efectivo:</span>
-                <span>$${formatearNumero(precioEfectivo)}</span>
+                <span><strong>$${formatearNumero(precioEfectivo)}</strong></span>
             </div>
         `;
 
