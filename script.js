@@ -169,6 +169,7 @@ function buscarPrecios(codigo = null) {
         const precioCredito = prenda.precio;
         const descripcion = prenda.descripcion;
         const precioCuota = precioCredito / 3;
+        const precioCuota1 = precioCredito / 6;
         const precioTransferencia = precioCredito * 0.80;
         const precioEfectivo = precioCredito * 0.75;
 
@@ -181,6 +182,10 @@ function buscarPrecios(codigo = null) {
             <div class="precio-item">
                 <span>3 de</span>
                 <span>$${formatearNumero(precioCuota)}</span>
+            </div>
+            <div class="precio-item">
+                <span>6 de</span>
+                <span>$${formatearNumero(precioCuota1)}</span>
             </div>
             <div class="precio-item">
                 <span>Transferencia/Débito:</span>
