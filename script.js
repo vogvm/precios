@@ -83,6 +83,7 @@ const prendas = {
     "04015": { precio: 47500, descripcion: "Sweters SKR" },
     "04016": { precio: 43750, descripcion: "Bross básico" },
     "04017": { precio: 53000, descripcion: "Sweters Bross" },
+    "04018": { precio: 43750, descripcion: "Buzo con capucha Rolly Go" },
     "05001": { precio: 24375, descripcion: "Algodón Vancouver" },
     "05002": { precio: 31500, descripcion: "Algodón Cara Cruz" },
     "05003": { precio: 24375, descripcion: "Piqué Bross" },
